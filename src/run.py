@@ -1,7 +1,5 @@
 import argparse
 
-import matplotlib.pyplot as plt
-import numpy as np
 import torch
 from sklearn.metrics import classification_report
 from torch.utils.data import DataLoader, TensorDataset
