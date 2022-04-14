@@ -26,6 +26,7 @@ def load_word_embeddings(filename, word2Idx):
             embedding_matrix[i] = embedding_vector
     return embedding_matrix
 
+
 def create_emb_layer(weights_matrix, trainable=True):
     num_embeddings, embedding_dim = weights_matrix.shape
     emb_layer = nn.Embedding(num_embeddings, embedding_dim)
@@ -34,6 +35,7 @@ def create_emb_layer(weights_matrix, trainable=True):
         emb_layer.weight.requires_grad = False
 
     return emb_layer, num_embeddings, embedding_dim
+
 
 class ToyNN(nn.Module):
     def __init__(self, weights_matrix, hidden_size, num_layers, n_classes):
@@ -45,10 +47,11 @@ class ToyNN(nn.Module):
         self.linear = nn.Linear(hidden_size*2, n_classes)
 
     def forward(self, inp):
-        h0 = torch.zeros(self.num_layers*2, inp.size(0), self.hidden_size)#.to(device) # 2 for bidirection
-        c0 = torch.zeros(self.num_layers*2, inp.size(0), self.hidden_size)#.to(device)
+        h0 = torch.zeros(self.num_layers*2, inp.size(0), self.hidden_size)
+        c0 = torch.zeros(self.num_layers*2, inp.size(0), self.hidden_size)
         out, _ = self.bilistm(self.embedding(inp), (h0, c0))
         return F.log_softmax(self.linear(out), dim=-1)
+
 
 def test(model, test_loader, epoch, epochs, status):
     model.eval()

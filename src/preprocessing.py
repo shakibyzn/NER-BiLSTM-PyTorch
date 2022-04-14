@@ -18,6 +18,7 @@ def split_text(filename):
         sentence = []
     return split_labeled_text
 
+
 def createMatrices(data, word2Idx, label2Idx):
     sentences = []
     labels = []
@@ -36,6 +37,7 @@ def createMatrices(data, word2Idx, label2Idx):
         sentences.append(wordIndices)
         labels.append(labelIndices)
     return sentences, labels
+
 
 def pad_seq(sentences, seq_len, label=False):
     if not label:
