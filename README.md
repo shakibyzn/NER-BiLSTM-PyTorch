@@ -7,6 +7,6 @@ cd NER-BiLSTM-PyTorch
 1. default parameters: batch size=1 and epochs=20
 python src/run.py
 2. parameters of your choice
-python run.py batch_size 64 --epochs 50
+python src/run.py batch_size 64 --epochs 50
 ```
 
